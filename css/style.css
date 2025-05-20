@@ -18,13 +18,16 @@ body {
 #formulario {
     width: 20%;
     background-color: rgb(181, 170, 170);
-    padding: 20px;
+    padding: 70px;
     border-right: 2px solid black;
 }
 
 #enviar {
+    margin-top: 30%;
+    padding: 10px;
+    border-radius: 20%;
     background-color: aqua;
-    margin-left: 70px;
+    margin-left: 40%;
 }
 
 #map {
@@ -32,5 +35,15 @@ body {
     flex-grow: 1;
     width: 80%;
     height: 100vh;
+}
+
+
+table tr{
+    padding: 60px;
+}
+
+
+#ciudad {
+    margin-top:50% ;
 }
 
