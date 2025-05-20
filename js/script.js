@@ -14,7 +14,21 @@ const locations = {
         {lat:41.8921407223458, lng:12.492090678304947, tittle: "Coliseo"},
         {lat:41.89327876491798, lng:12.486571912390653, tittle: "Foro Romano"}
     ],
-    
+    viena: [
+        { lat:48.2082, lng: 16.3738, tittle: "Palacio de Hofburg"},
+        { lat:48.2064, lng: 16.3721, tittle: "Catedral de San Esteban"},
+        { lat:48.2075, lng: 16.3733, tittle: "Museo de Historia del Arte"}
+    ],
+    bucarest:[
+        { lat:44.4268, lng: 26.1025, tittle: "Palacio del Parlamento"},
+        { lat:44.4328, lng: 26.1043, tittle: "Catedral Patriarcal"},
+        { lat:44.4394, lng: 26.0977, tittle: "Museo Nacional de Arte"}
+    ],
+    tokyo:[
+        { lat:35.6895, lng: 139.6917, tittle: "Torre de Tokio"},
+        { lat:35.6762, lng: 139.6503, tittle: "Santuario Meiji"},
+        { lat:35.6586, lng: 139.7454, tittle: "Shibuya"}
+    ],
 }
 
 
