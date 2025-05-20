@@ -103,7 +103,7 @@ enviar.addEventListener('click', function() {
     else if(ciudad === 'tokyo'){
         lat = 35.6823751757838
         lng = 139.76299719783276
-        zoom = 12;
+        zoom = 13;
     }
     initMap(lat, lng, ciudad, zoom);
 
