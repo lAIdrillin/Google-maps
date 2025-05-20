@@ -79,7 +79,7 @@ enviar.addEventListener('click', function() {
     if (ciudad === 'madrid'){
         lat = 40.41895303835641
         lng = -3.7173449515944736
-        zoom = 12;
+        zoom = 11;
 
     }else if(ciudad === 'paris'){
         lat = 48.85879187839086
