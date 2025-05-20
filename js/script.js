@@ -41,7 +41,7 @@ function initMap(lat, lng) {
     });
     mapa.style.display = 'block';
   }
-
+}
 
 
 
