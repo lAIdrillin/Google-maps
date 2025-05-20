@@ -44,7 +44,6 @@ const enviar = document.getElementById('enviar');
 const formulario = document.getElementById('formulario');
 const mapa = document.getElementById('map');
 
-formulario.style.display = 'block';
 
 function initMap(lat, lng, ciudad, zoom) {
     
@@ -61,7 +60,7 @@ function initMap(lat, lng, ciudad, zoom) {
             });
         });
     }
-    mapa.style.display = 'block';
+
   }
 
 
@@ -72,6 +71,7 @@ enviar.addEventListener('click', function() {
     let lat;
     let lng;
     let zoom = 11;
+    mapa.style.display = 'block';
     if (ciudad === 'madrid'){
         lat = 40.41895303835641
         lng = -3.7173449515944736
