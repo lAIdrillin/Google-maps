@@ -84,32 +84,32 @@ enviar.addEventListener('click', function() {
     }else if(ciudad === 'paris'){
         lat = 48.85879187839086
         lng = 2.352870623663526
-        zoom = 13;
+        zoom = 12;
 
     }else if(ciudad === 'roma'){
         lat = 41.89711601940518
         lng = 12.490647360010009
-        zoom = 15;
+        zoom = 13;
 
     }else if (ciudad === 'berlin'){
         lat = 52.51751451642019
         lng = 13.399355245549877
-        zoom = 14;
+        zoom = 13;
 
     }else if(ciudad === 'viena'){
         lat = 48.21269348527829
         lng =  16.36794393076543
-        zoom = 15;
+        zoom = 13;
 
     }else if(ciudad === 'bucarest'){
         lat = 44.42648279081045
         lng = 26.103890154425134
-        zoom = 14;
+        zoom = 13;
     }
     else if(ciudad === 'tokyo'){
         lat = 35.6823751757838
         lng = 139.76299719783276
-        zoom = 13;
+        zoom = 12;
     }
     initMap(lat, lng, ciudad, zoom);
 
