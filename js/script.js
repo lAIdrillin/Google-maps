@@ -29,6 +29,11 @@ const locations = {
         { lat:35.6762, lng: 139.6503, tittle: "Santuario Meiji"},
         { lat:35.6586, lng: 139.7454, tittle: "Shibuya"}
     ],
+    berlin:[
+        { lat:52.5200, lng: 13.4050, tittle: "Puerta de Brandenburgo"},
+        { lat:52.5309, lng: 13.3847, tittle: "Isla de los Museos"},
+        { lat:52.5163, lng: 13.3777, tittle: "Reichstag"}
+    ]
 }
 
 
