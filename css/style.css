@@ -9,3 +9,11 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+table{
+    border: 2, hidden, black;
+}
+
+#formulario{
+    margin-left: 500px;
+}
