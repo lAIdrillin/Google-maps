@@ -94,7 +94,7 @@ enviar.addEventListener('click', function() {
     }else if (ciudad === 'berlin'){
         lat = 52.51751451642019
         lng = 13.399355245549877
-        zoom = 13;
+        zoom = 13; 
 
     }else if(ciudad === 'viena'){
         lat = 48.21269348527829
