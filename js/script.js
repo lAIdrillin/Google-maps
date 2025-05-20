@@ -31,7 +31,7 @@ const locations = {
     ],
     berlin:[
         { lat:52.51640511265577, lng: 13.378101076410683,  tittle: "Puerta de Brandenburgo", icono: '🗿'},
-        { lat:52.51916425319998,lng: 13.401418375983647, tittle: "Berliner Dom", icono: '⚽'},
+        { lat:52.514710817655924,lng: 13.239516995839624, tittle: "Berliner Dom", icono: '⚽'},
         { lat:52.51872459043386, lng: 13.376627090221106, tittle: "Reichstag", icono: '⛪'}
     ]
     
