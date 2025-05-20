@@ -8,4 +8,23 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: gray;
+}
+
+table {
+    background-color: rgb(181, 170, 170);
+    margin-top:50px ;
+    padding: 20px;
+    border: 2px double black;
+}
+tr td {
+    padding: 50px;
+}
+
+#formulario{
+    margin-left: 500px;
+}
+#enviar {
+    background-color: aqua;
+    margin-left: 70px;
 }
