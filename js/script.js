@@ -14,26 +14,27 @@ const locations = {
         {lat:41.8921407223458, lng:12.492090678304947, tittle: "Coliseo"},
         {lat:41.89327876491798, lng:12.486571912390653, tittle: "Foro Romano"}
     ],
-    viena: [
-        { lat:48.2082, lng: 16.3738, tittle: "Palacio de Hofburg"},
-        { lat:48.2064, lng: 16.3721, tittle: "Catedral de San Esteban"},
-        { lat:48.2075, lng: 16.3733, tittle: "Museo de Historia del Arte"}
+        viena: [
+        { lat:48.205815044869034, lng: 16.36499488545591, tittle: "Palacio de Hofburg"},
+        { lat:48.20851142386625,  lng: 16.374178811573476, tittle: "Catedral de San Esteban"},
+        { lat:48.203930242825116,  lng: 16.36221656187421, tittle: "Museo de Historia del Arte"}
     ],
     bucarest:[
-        { lat:44.4268, lng: 26.1025, tittle: "Palacio del Parlamento"},
-        { lat:44.4328, lng: 26.1043, tittle: "Catedral Patriarcal"},
-        { lat:44.4394, lng: 26.0977, tittle: "Museo Nacional de Arte"}
+        { lat:44.42765667621226,  lng: 26.08749008196995, tittle: "Palacio del Parlamento"},
+        { lat:44.42470172513721,  lng: 26.09832592085045, tittle: "Catedral Patriarcal"},
+        { lat:44.43942128746843,  lng: 26.09606300531352, tittle: "Museo Nacional de Arte"}
     ],
     tokyo:[
-        { lat:35.6895, lng: 139.6917, tittle: "Torre de Tokio"},
-        { lat:35.6762, lng: 139.6503, tittle: "Santuario Meiji"},
-        { lat:35.6586, lng: 139.7454, tittle: "Shibuya"}
+        { lat:35.65871119762234, lng:139.74571185501947, tittle: "Torre de Tokio"},
+        { lat:35.67652827040102, lng:  139.69951902385392, tittle: "Santuario Meiji"},
+        { lat:35.714742672477264,  lng: 139.79665731727718, tittle: "Templo de la diosa de la misericordia"}
     ],
     berlin:[
-        { lat:52.5200, lng: 13.4050, tittle: "Puerta de Brandenburgo"},
-        { lat:52.5309, lng: 13.3847, tittle: "Isla de los Museos"},
-        { lat:52.5163, lng: 13.3777, tittle: "Reichstag"}
+        { lat:52.51640511265577, lng: 13.378101076410683,  tittle: "Puerta de Brandenburgo"},
+        { lat:52.51916425319998,lng: 13.401418375983647, tittle: "Berliner Dom"},
+        { lat:52.51872459043386, lng: 13.376627090221106, tittle: "Reichstag"}
     ]
+    
 }
 
 
@@ -44,6 +45,8 @@ const enviar = document.getElementById('enviar');
 const formulario = document.getElementById('formulario');
 const mapa = document.getElementById('map');
 
+
+mapa.style.display = '';
 
 function initMap(lat, lng, ciudad, zoom) {
     
@@ -60,7 +63,7 @@ function initMap(lat, lng, ciudad, zoom) {
             });
         });
     }
-
+    mapa.style.display = 'block';
   }
 
 
@@ -71,7 +74,6 @@ enviar.addEventListener('click', function() {
     let lat;
     let lng;
     let zoom = 11;
-    mapa.style.display = 'block';
     if (ciudad === 'madrid'){
         lat = 40.41895303835641
         lng = -3.7173449515944736
