@@ -1,8 +1,8 @@
 const locations = {
     madrid: [
-        { lat:40.45310696447501, lng:-3.6880131863036696, tittle: "Bernabeu", icono: '⚽', fondo: 'https://images.icon-icons.com/2985/PNG/512/map_pin_pushpin_location_placeholder_icon_187149.png'},
-        { lat:40.420125098014, lng:-3.688705230915027, tittle: "Puerta de Alcala", icono: '🗿', fondo: 'https://images.icon-icons.com/2985/PNG/512/map_pin_pushpin_location_placeholder_icon_187149.png'},
-        { lat:40.491089078668125,   lng: -3.5647155135021222, tittle: "Aeropuerto barajas", icono: '✈️', fondo: 'https://images.icon-icons.com/2985/PNG/512/map_pin_pushpin_location_placeholder_icon_187149.png'}
+        { lat:40.45310696447501, lng:-3.6880131863036696, tittle: "Bernabeu", icono: '⚽', fondo: 'https://cdn.pixabay.com/photo/2013/07/13/01/09/map-155198_640.png'},
+        { lat:40.420125098014, lng:-3.688705230915027, tittle: "Puerta de Alcala", icono: '🗿', fondo: 'https://cdn.pixabay.com/photo/2013/07/13/01/09/map-155198_640.png'},
+        { lat:40.491089078668125,   lng: -3.5647155135021222, tittle: "Aeropuerto barajas", icono: '✈️', fondo: 'https://cdn.pixabay.com/photo/2013/07/13/01/09/map-155198_640.png'}
     ],
     paris: [
         { lat:48.85841025645972, lng:2.2944923078862978, tittle: "Torre Eiffel"},
@@ -60,7 +60,7 @@ function initMap(lat, lng, ciudad, zoom) {
                 label: loc.icono,
                 icon:{
                    url: loc.fondo,     
-                    scaledSize: new google.maps.Size(40, 56),    
+                    scaledSize: new google.maps.Size(30, 36),    
                 }
                     
             });
