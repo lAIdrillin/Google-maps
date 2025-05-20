@@ -10,17 +10,17 @@ const locations = {
         { lat:48.85302032202513, lng:2.349873990389982, tittle: "Nottre Dame", icono: '⛪'}
     ],
     roma: [
-        {lat:41.9009841224931, lng:12.48329946954169, tittle: "Fontana de Trevi", icono: '🗿'},
+        {lat:41.9339361898924,  lng:12.454870454553554, tittle: "Estadio Olimpico de Roma", icono: '⚽'},
         {lat:41.89027997948962, lng:12.492212550815092, tittle: "Coliseo", icono: '🗿'},
         {lat:41.89211998049781, lng:12.486435780698526, tittle: "Foro Romano", icono: '🗿'}
     ],
-        viena: [
-        { lat:48.205815044869034, lng: 16.36499488545591, tittle: "Palacio de Hofburg", icono: '⚽'},
+    viena: [
+        { lat:48.20720777125714, lng: 16.420759389958327, tittle: "Estadio Ernst Happel", icono: '⚽'},
         { lat:48.20851142386625,  lng: 16.374178811573476, tittle: "Catedral de San Esteban", icono: '⛪'},
         { lat:48.203930242825116,  lng: 16.36221656187421, tittle: "Museo de Historia del Arte", icono: '🗿'}
     ],
     bucarest:[
-        { lat:44.42765667621226,  lng: 26.08749008196995, tittle: "Palacio del Parlamento", icono: '⚽'},
+        { lat:44.43720726529465,  lng: 26.152443435697926, tittle: "Arena Națională", icono: '⚽'},
         { lat:44.42470172513721,  lng: 26.09832592085045, tittle: "Catedral Patriarcal", icono: '⛪'},
         { lat:44.43942128746843,  lng: 26.09606300531352, tittle: "Museo Nacional de Arte", icono: '🗿'}
     ],
@@ -31,7 +31,7 @@ const locations = {
     ],
     berlin:[
         { lat:52.51640511265577, lng: 13.378101076410683,  tittle: "Puerta de Brandenburgo", icono: '🗿'},
-        { lat:52.514710817655924,lng: 13.239516995839624, tittle: "Berliner Dom", icono: '⚽'},
+        { lat:52.514710817655924,lng: 13.239516995839624, tittle: "Estadio Olimpico de Berlín", icono: '⚽'},
         { lat:52.51872459043386, lng: 13.376627090221106, tittle: "Reichstag", icono: '⛪'}
     ]
     
@@ -86,12 +86,12 @@ enviar.addEventListener('click', function() {
     }else if(ciudad === 'roma'){
         lat = 41.89711601940518
         lng = 12.490647360010009
-        zoom = 13;
+        zoom = 12.5;
 
     }else if (ciudad === 'berlin'){
         lat = 52.51751451642019
         lng = 13.399355245549877
-        zoom = 13; 
+        zoom = 11; 
 
     }else if(ciudad === 'viena'){
         lat = 48.21269348527829
