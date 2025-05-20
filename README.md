@@ -12,8 +12,10 @@ En la sesion de hoy nos hemos encargado de hacer el formulario que incluye 7 ciu
 1. **Solución**:Fuimos una por una camabiandolas para que fueran lo mas precisas posibles
 
 ### Fuentes Consultadas
-- GitHub Copilot
-- YouTube
+- W3schools
+- Chat GPT
+- Compañeros de clase
+
 
 **Decisiones tecnicas**:
 - Localizaciones dentro de cada ciudad
