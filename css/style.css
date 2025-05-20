@@ -1,30 +1,32 @@
-#map {
-    display: none;
-    height: 500px;
-    width: 100%;
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: gray;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: gray;
+#contenido {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
 }
 
-table {
-    background-color: rgb(181, 170, 170);
-    margin-top:50px ;
-    padding: 20px;
-    border: 2px double black;
-}
-tr td {
-    padding: 50px;
+
+#formulario {
+  width: 20%;
+  background-color: rgb(181, 170, 170);
+  padding: 20px;
+  border-right: 2px solid black;
 }
 
-#formulario{
-    margin-left: 500px;
-}
 #enviar {
-    background-color: aqua;
-    margin-left: 70px;
+  background-color: aqua;
+  margin-left: 70px;
+}
+
+#map {
+  display: none;
+  flex-grow: 1;
+    width: 80%;
+  height: 100vh;
 }

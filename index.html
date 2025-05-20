@@ -3,37 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>EjemMaps</title>
-    <link rel="stylesheet" href="css/style.css">
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div id="contenido">
     <div id="formulario">
-        <table>
-            <tr>
-                <td>seleccione la ciudad:
-                    <select name="ciudad" id="ciudad">
-                        <option value="madrid">Madrid</option>
-                        <option value="paris">Paris</option>
-                        <option value="roma">Roma</option>
-                        <option value="sarajevo">Sarajevo</option>
-                        <option value="viena">Viena</option>
-                        <option value="bucarest">Bucarest</option>
-                        <option value="tokyo">Tokyo</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button id="enviar">A VIAJAR</button>
-                </td>
-            </tr>
-        </table>
+      <table>
+        <tr>
+          <td>Seleccione la ciudad:
+            <select name="ciudad" id="ciudad">
+              <option value="madrid">Madrid</option>
+              <option value="paris">Paris</option>
+              <option value="roma">Roma</option>
+              <option value="berlin">Berlín</option>
+              <option value="viena">Viena</option>
+              <option value="bucarest">Bucarest</option>
+              <option value="tokyo">Tokyo</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button id="enviar">A VIAJAR</button>
+          </td>
+        </tr>
+      </table>
     </div>
     <div id="map"></div>
+  </div>
 
-    <script src="js/script.js"></script>
-    <script async
+  <script src="js/script.js"></script>
+  <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7w5w8ElCQeG79YeDfxsYaq5F1FQ0HBnU&callback=initMap">
-    </script>
+  </script>
 </body>
 </html>

@@ -41,11 +41,11 @@ const mapa = document.getElementById('map');
 
 formulario.style.display = 'block';
 
-function initMap(lat, lng, ciudad) {
+function initMap(lat, lng, ciudad, zoom) {
     
     let map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: lat, lng: lng },
-      zoom: 6,
+      zoom: zoom,
     });
     if (locations[ciudad]) {
         locations[ciudad].forEach(loc => {
@@ -66,6 +66,7 @@ enviar.addEventListener('click', function() {
     const ciudad = document.getElementById('ciudad').value;
     let lat;
     let lng;
+    let zoom = 11;
     if (ciudad === 'madrid'){
         lat = 40.41895303835641
         lng = -3.7173449515944736
@@ -78,9 +79,9 @@ enviar.addEventListener('click', function() {
         lat = 41.89711601940518
         lng = 12.490647360010009
 
-    }else if (ciudad === 'sarajevo'){
-        lat = 43.85627799383089
-        lng =  8.41245180743923
+    }else if (ciudad === 'berlin'){
+        lat = 52.51751451642019
+        lng = 13.399355245549877
 
     }else if(ciudad === 'viena'){
         lat = 48.21269348527829
@@ -94,7 +95,7 @@ enviar.addEventListener('click', function() {
         lat = 35.6823751757838
         lng = 139.76299719783276
     }
-    initMap(lat, lng, ciudad);
-    formulario.style.display = 'none';
+    initMap(lat, lng, ciudad, zoom);
+
     
 });
