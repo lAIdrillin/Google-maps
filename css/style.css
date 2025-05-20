@@ -2,6 +2,10 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-image: url(/img/33ca6991-c015-4352-9e7f-7fca82b82e68.png);
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
 }
 
 #contenido {

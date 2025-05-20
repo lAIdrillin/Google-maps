@@ -39,14 +39,11 @@ const locations = {
 
 
 
-
-
 const enviar = document.getElementById('enviar');
 const formulario = document.getElementById('formulario');
 const mapa = document.getElementById('map');
 
 
-mapa.style.display = '';
 
 function initMap(lat, lng, ciudad, zoom) {
     
@@ -63,7 +60,6 @@ function initMap(lat, lng, ciudad, zoom) {
             });
         });
     }
-    mapa.style.display = 'block';
   }
 
 
@@ -104,5 +100,5 @@ enviar.addEventListener('click', function() {
     }
     initMap(lat, lng, ciudad, zoom);
 
-    
+    mapa.style.display = 'block';
 });
