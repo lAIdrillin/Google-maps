@@ -7,12 +7,27 @@
   </style>
 </head>
 <body>
-  <h1>Ejemplo Maps</h1>
-  <div id="map"></div>
+    <div id="formulario">
+        <table>
+            <tr>
+                <td>
+                    <select name="ciudad" id="ciudad">
+                        <option value="madrid">Madrid</option>
+                        <option value="paris">Paris</option>
+                        <option value="roma">Roma</option>
+                        <option value="sarajevo">Sarajevo</option>
+                        <option value="viena">Viena</option>
+                        <option value="bucarest">Bucarest</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="map"></div>
 
-  <script src="js/script.js"></script>
-  <script async
+    <script src="js/script.js"></script>
+    <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7w5w8ElCQeG79YeDfxsYaq5F1FQ0HBnU&callback=initMap">
-  </script>
+    </script>
 </body>
 </html>
