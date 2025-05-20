@@ -62,22 +62,14 @@ function initMap(lat, lng, ciudad, zoom) {
     }
   }
 
-const zoom = {
-    madrid: 13,
-    paris: 13,
-    roma: 13,
-    viena: 13,
-    bucarest: 13,
-    tokyo: 13,
-    berlin: 13
-};
+
 
 
 enviar.addEventListener('click', function() {
     const ciudad = document.getElementById('ciudad').value;
     let lat;
     let lng;
-    let zoom = zooms[ciudad];
+    let zoom = 11;
     if (ciudad === 'madrid'){
         lat = 40.41895303835641
         lng = -3.7173449515944736
