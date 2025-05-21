@@ -47,8 +47,8 @@ const mapa = document.getElementById('map');
 
 function añadirAlMapa(direccion, ciudad, categoria) {
     const geocoder = new google.maps.Geocoder();
-    if (ciudad.value === "") {
-        alert("Seleccione una ciudad válida antes de añadir la dirección.");
+    if (ciudad === "") {
+        alert("Seleccione una ciudad válida antes de añadir la dirección");
         return;
     }else{
         geocoder.geocode({ address: direccion }, (results, status) => {
@@ -74,17 +74,16 @@ function añadirAlMapa(direccion, ciudad, categoria) {
     }
 }
 
-function comprobarDireccion(){
-    const direccion = document.getElementById('direccion');
-    const categoria = document.getElementById('categoria');
-    if(direccion.value != ""){
-        if(categoria.value === "") {
+function comprobarDireccion(direccion, categoria){
+    if(direccion != ""){
+        if(categoria === "") {
             alert("Ingrese una categoria para su Direccion");
             return
         }else{
             añadirAlMapa(direccion, categoria, ciudad);
         }
     }
+    
 }
 
 function seleccionIcono(categoria){
@@ -175,9 +174,8 @@ enviar.addEventListener('click', function () {
     const ciudad = document.getElementById('ciudad').value;
     const categoria = document.getElementById('categoria').value;
 
-
-
-    añadirAlMapa(direccion, ciudad);
     comprobarCiudad(ciudad);
+    comprobarDireccion(direccion, categoria);
+    añadirAlMapa(direccion, ciudad, categoria);
 });
 
