@@ -23,11 +23,10 @@ let localizaciones = JSON.parse(localStorage.getItem('localizaciones')) || {
     
 }
 
-
-
 const enviar = document.getElementById('enviar');
 const formulario = document.getElementById('formulario');
 const mapa = document.getElementById('map');
+const borrar = document.getElementById('borrar');
 
 
 function guardarEnLocalStorage() {
@@ -40,7 +39,7 @@ function añadirAlMapa(direccion, ciudad, categoria) {
         alert("Seleccione una ciudad válida antes de añadir la dirección");
         return;
     }else{
-        geocoder.geocode({ address: direccion }, (results, status) => {
+        geocoder.geocode({ address: direccion +", " + ciudad }, (results, status) => {
             if (status === "OK") {
                 const location = results[0].geometry.location;
                 const latit = location.lat();
@@ -73,9 +72,6 @@ function seleccionIcono(categoria){
         case 'otros': return '⚙️'
     }
 }
-
-
-
 
 function initMap(lat, lng, ciudad, zoom) {
     
@@ -144,30 +140,32 @@ function comprobarCiudad(ciudad){
 
 }
 
-
 enviar.addEventListener('click', function () {
     const direccionInput = document.getElementById('direccion');
     const direccion = direccionInput.value;
     const ciudad = document.getElementById('ciudad').value;
     const categoria = document.getElementById('categoria').value;
-    document.getElementById('categoria').value = "";
-    document.getElementById('direccion').value = "";
+
 
     if (!categoria && direccion) {
     alert("Ingrese una categoría para su Dirección");
     return;
-  }
+    }
 
-  if (categoria && !direccion){
+    if (categoria && !direccion){
     alert("Ingrese una direccion para su Dirección");
     return;
-  }
+    }
+
+    if(categoria && direccion){
+    añadirAlMapa(direccion, ciudad, categoria);
+    }
+    document.getElementById('categoria').value = "";
+    document.getElementById('direccion').value = "";
 
     comprobarCiudad(ciudad);
-    añadirAlMapa(direccion, ciudad, categoria);
 });
 
-const borrar = document.getElementById('borrar');
 borrar.addEventListener('click', function () {
 
     for (let ciudad in localizaciones) {
