@@ -45,6 +45,34 @@ const mapa = document.getElementById('map');
 
 
 
+function añadirAlMapa(direccion, ciudad) {
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ address: direccion }, (results, status) => {
+        if (status === "OK") {
+            const location = results[0].geometry.location;
+            const latit = location.lat();
+            const lngitud = location.lng();
+
+
+            locations[ciudad].push({
+                lat: latit,
+                lng: lngitud,
+                tittle: direccion,
+                icono: '🗿'
+            });
+
+
+            initMap(latit, lngitud, ciudad, 12);
+        } else {
+            alert("No se pudo encontrar la dirección: " + status);
+        }
+    });
+}
+
+
+
+
 
 function initMap(lat, lng, ciudad, zoom) {
     
@@ -125,10 +153,15 @@ function comprobarCiudad(ciudad){
 }
 
 
-enviar.addEventListener('click', function() {
+enviar.addEventListener('click', function () {
+    const direccionInput = document.getElementById('direccion');
+    const direccion = direccionInput.value;
     const ciudad = document.getElementById('ciudad').value;
+    const categoria = document.getElementById('categoria').value;
 
-    comprobarDireccion()
-    comprobarCiudad(ciudad)
-    
+
+
+    añadirAlMapa(direccion, ciudad);
+    comprobarCiudad(ciudad);
 });
+
