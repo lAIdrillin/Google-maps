@@ -45,6 +45,7 @@ const mapa = document.getElementById('map');
 
 
 
+
 function initMap(lat, lng, ciudad, zoom) {
     
     let map = new google.maps.Map(document.getElementById("map"), {
@@ -65,11 +66,18 @@ function initMap(lat, lng, ciudad, zoom) {
     }
   }
 
+function comprobarDireccion(){
+    const direccion = document.getElementById('direccion');
+    const categoria = document.getElementById('categoria');
+    if(direccion.value != ""){
+        if(categoria.value === "") {
+            alert("Ingrese una categoria para su Direccion")
+            return
+        }
+    }
+}
 
-
-
-enviar.addEventListener('click', function() {
-    const ciudad = document.getElementById('ciudad').value;
+function comprobarCiudad(ciudad){
     let lat;
     let lng;
     let zoom;
@@ -107,8 +115,20 @@ enviar.addEventListener('click', function() {
         lat = 35.6823751757838
         lng = 139.76299719783276
         zoom = 12;
+    }else if(ciudad === ''){
+        return;
     }
     initMap(lat, lng, ciudad, zoom);
 
     mapa.style.display = 'block';
+
+}
+
+
+enviar.addEventListener('click', function() {
+    const ciudad = document.getElementById('ciudad').value;
+
+    comprobarDireccion()
+    comprobarCiudad(ciudad)
+    
 });
