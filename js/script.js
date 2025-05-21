@@ -179,3 +179,15 @@ enviar.addEventListener('click', function () {
     añadirAlMapa(direccion, ciudad, categoria);
 });
 
+const borrar = document.getElementById('borrar');
+borrar.addEventListener('click', function () {
+    // Vacía todas las direcciones de cada ciudad
+    for (let ciudad in localizaciones) {
+        localizaciones[ciudad] = [];
+    }
+    // Muestra el mapa vacío centrado en Europa
+    let map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 48.85879187839086, lng: 2.352870623663526 }, // París como centro
+        zoom: 4
+    });
+});
