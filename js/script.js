@@ -45,31 +45,58 @@ const mapa = document.getElementById('map');
 
 
 
-function añadirAlMapa(direccion, ciudad) {
+function añadirAlMapa(direccion, ciudad, categoria) {
     const geocoder = new google.maps.Geocoder();
-
-    geocoder.geocode({ address: direccion }, (results, status) => {
-        if (status === "OK") {
-            const location = results[0].geometry.location;
-            const latit = location.lat();
-            const lngitud = location.lng();
-
-
-            locations[ciudad].push({
-                lat: latit,
-                lng: lngitud,
-                tittle: direccion,
-                icono: '🗿'
-            });
+    if (ciudad.value === "") {
+        alert("Seleccione una ciudad válida antes de añadir la dirección.");
+        return;
+    }else{
+        geocoder.geocode({ address: direccion }, (results, status) => {
+            if (status === "OK") {
+                const location = results[0].geometry.location;
+                const latit = location.lat();
+                const lngitud = location.lng();
 
 
-            initMap(latit, lngitud, ciudad, 12);
-        } else {
-            alert("No se pudo encontrar la dirección: " + status);
-        }
-    });
+                locations[ciudad].push({
+                    lat: latit,
+                    lng: lngitud,
+                    tittle: direccion,
+                    icono: seleccionIcono(categoria)
+                });
+
+
+                initMap(latit, lngitud, ciudad, 12);
+            } else {
+                alert("No se pudo encontrar la dirección: " + status);
+            }
+        });
+    }
 }
 
+function comprobarDireccion(){
+    const direccion = document.getElementById('direccion');
+    const categoria = document.getElementById('categoria');
+    if(direccion.value != ""){
+        if(categoria.value === "") {
+            alert("Ingrese una categoria para su Direccion");
+            return
+        }else{
+            añadirAlMapa(direccion, categoria, ciudad);
+        }
+    }
+}
+
+function seleccionIcono(categoria){
+    switch (categoria.toLowerCase()) {
+        case 'deportes': return '⚽';
+        case 'cultura': return '🗿';
+        case 'monumentos': return '⛪';
+        case 'torres': return '🗼';
+        case 'viajes': return '✈️';
+        case 'otros': return '⚙️'
+    }
+}
 
 
 
@@ -93,17 +120,6 @@ function initMap(lat, lng, ciudad, zoom) {
         });
     }
   }
-
-function comprobarDireccion(){
-    const direccion = document.getElementById('direccion');
-    const categoria = document.getElementById('categoria');
-    if(direccion.value != ""){
-        if(categoria.value === "") {
-            alert("Ingrese una categoria para su Direccion")
-            return
-        }
-    }
-}
 
 function comprobarCiudad(ciudad){
     let lat;
