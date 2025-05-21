@@ -150,6 +150,8 @@ enviar.addEventListener('click', function () {
     const direccion = direccionInput.value;
     const ciudad = document.getElementById('ciudad').value;
     const categoria = document.getElementById('categoria').value;
+    document.getElementById('categoria').value = "";
+    document.getElementById('direccion').value = "";
 
     if (!categoria && direccion) {
     alert("Ingrese una categoría para su Dirección");
@@ -176,5 +178,6 @@ borrar.addEventListener('click', function () {
         center: { lat: 48.85879187839086, lng: 2.352870623663526 },
         zoom: 4
     });
+    
 });
 
