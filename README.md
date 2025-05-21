@@ -24,3 +24,28 @@ En la sesion de hoy nos hemos encargado de hacer el formulario que incluye 7 ciu
 
 **Ideas de mejora futura**:
 - Mejorar iconos del mapa
+
+## Sesión 3: Personalizar el mapa (21/05/2025)
+
+### Resumen
+En la sesion de hoy nos hemos encargado de crear un input para introducir una direccion personalizada además de un desplegable para poder seleccionar la categoría de dicha dirección
+
+### Dificultades Encontradas
+
+
+### Soluciones Aplicadas
+
+
+### Fuentes Consultadas
+- W3schools
+- Chat GPT
+- Compañeros de clase
+
+
+**Decisiones tecnicas**:
+
+- Logica para mostrar las ubicaciones correctas en la propia ciudad
+
+
+**Ideas de mejora futura**:
+- Mejorar iconos del mapa
