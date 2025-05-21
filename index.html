@@ -12,6 +12,7 @@
         <tr>
           <td><strong>Seleccione ciudad:</strong>
             <select name="ciudad" id="ciudad">
+              <option value="" selected disabled>---Seleccione una ciudad---</option>
               <option value="madrid">Madrid</option>
               <option value="paris">Paris</option>
               <option value="roma">Roma</option>
@@ -23,8 +24,29 @@
           </td>
         </tr>
         <tr>
+          <td><strong>Dirección:</strong>
+            <input type="text" id="direccion">
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Categoría:</strong>
+            <select id="categoria">
+              <option value="" selected disabled>---Seleccione una categoría---</option>
+              <option value="deportes">Deportes</option>
+              <option value="cultura">Cultura</option>
+              <option value="viajes">Viajes</option>
+              <option value="monumentos">Monumentos</option>
+              <option value="torres">Torre</option>
+              <option value="otros">Otros</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
           <td>
             <button id="enviar">A VIAJAR</button>
+          </td>
+          <td>
+            <button id="borrar">BORRAR</button>
           </td>
         </tr>
       </table>
