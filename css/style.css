@@ -39,7 +39,7 @@ body {
     letter-spacing: 1px;
 }
 
-#ciudad {
+.ciudad {
     margin-top: 30px;
     width: 100%;
     padding: 10px;
