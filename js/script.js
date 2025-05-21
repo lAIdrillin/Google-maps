@@ -1,4 +1,4 @@
-const locations = {
+const localizaciones = {
     madrid: [
         { lat:40.45310696447501, lng:-3.6880131863036696, tittle: "Bernabeu", icono: '⚽'},
         { lat:40.420125098014, lng:-3.688705230915027, tittle: "Puerta de Alcala", icono: '🗿'},
@@ -58,7 +58,7 @@ function añadirAlMapa(direccion, ciudad, categoria) {
                 const lngitud = location.lng();
 
 
-                locations[ciudad].push({
+                localizaciones[ciudad].push({
                     lat: latit,
                     lng: lngitud,
                     tittle: direccion,
@@ -106,8 +106,8 @@ function initMap(lat, lng, ciudad, zoom) {
       center: { lat: lat, lng: lng },
       zoom: zoom,
     });
-    if (locations[ciudad]) {
-        locations[ciudad].forEach(loc => {
+    if (localizaciones[ciudad]) {
+        localizaciones[ciudad].forEach(loc => {
             new google.maps.Marker({
                 position: { lat: loc.lat, lng: loc.lng },
                 map: map,
