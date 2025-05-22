@@ -146,19 +146,19 @@ let terremotos = [];
 
 async function obtenerDatosXML() {
   try {
-    const respuesta = await fetch(url);
-    const textoXML = await respuesta.text();
+    const respuesta = await fetch(url); //hace una petición HTTP a la URL del feed de sismología.
+    const textoXML = await respuesta.text(); // lee la respuesta como texto plano.
 
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(textoXML, "application/xml");
+    const parser = new DOMParser(); //convierte la cadena de texto en un árbol DOM.
+    const xmlDoc = parser.parseFromString(textoXML, "application/xml"); //es ahora un objeto que podemos navegar con métodos DOM.
 
-    const items = xmlDoc.querySelectorAll("item");
+    const items = xmlDoc.querySelectorAll("item");  //Cada <item> en el feed representa un terremoto o evento sísmico.
 
     terremotos = []; 
     items.forEach(item => {
-      const titulo = item.querySelector("title")?.textContent || "Sin título";
-    const lat = parseFloat(item.getElementsByTagNameNS("*", "lat")[0]?.textContent);
-    const lon = parseFloat(item.getElementsByTagNameNS("*", "long")[0]?.textContent);
+      const titulo = item.querySelector("title")?.textContent || "Sin título"; //se busca el primer <title> hijo y se extrae su texto
+    const lat = parseFloat(item.getElementsByTagNameNS("*", "lat")[0]?.textContent); //se extrae latitud
+    const lon = parseFloat(item.getElementsByTagNameNS("*", "long")[0]?.textContent); //se extrae longitud
 
 
       if (!isNaN(lat) && !isNaN(lon)) {
@@ -233,16 +233,15 @@ enviar.addEventListener('click', async function () {
 });
 
 borrar.addEventListener('click', function () {
+
     for (let ciudad in localizaciones) {
         localizaciones[ciudad] = [];
     }
-    guardarEnLocalStorage();
-    const map = new google.maps.Map(document.getElementById('map'), {
+
+    let map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 48.85879187839086, lng: 2.352870623663526 },
         zoom: 4
     });
-
-   
+    
 });
-
 
