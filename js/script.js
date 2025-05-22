@@ -140,14 +140,72 @@ function comprobarCiudad(ciudad){
 
 }
 
-enviar.addEventListener('click', function () {
+const url = 'https://www.ign.es/ign/RssTools/sismologia.xml';
+
+let terremotos = []; 
+
+async function obtenerDatosXML() {
+  try {
+    const respuesta = await fetch(url);
+    const textoXML = await respuesta.text();
+
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(textoXML, "application/xml");
+
+    const items = xmlDoc.querySelectorAll("item");
+
+    terremotos = []; 
+    items.forEach(item => {
+      const titulo = item.querySelector("title")?.textContent || "Sin título";
+    const lat = parseFloat(item.getElementsByTagNameNS("*", "lat")[0]?.textContent);
+    const lon = parseFloat(item.getElementsByTagNameNS("*", "long")[0]?.textContent);
+
+
+      if (!isNaN(lat) && !isNaN(lon)) {
+        terremotos.push({
+          lat: lat,
+          lng: lon,
+          title: titulo,
+          icono: "🌋"
+        });
+      }
+    });
+
+  } catch (error) {
+    console.error("Error al obtener o procesar el XML:", error);
+  }
+}
+
+obtenerDatosXML();
+
+
+enviar.addEventListener('click', async function () {
     const direccionInput = document.getElementById('direccion');
     const direccion = direccionInput.value;
     const ciudad = document.getElementById('ciudad').value;
     const categoria = document.getElementById('categoria').value;
     const evento = document.getElementById('evento').value
-    if(evento){
-        alert("mdwqd");
+    if(evento === "terremotos"){
+        await obtenerDatosXML();
+
+        let map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 40.0, lng: -3.7 },
+            zoom: 5,
+        });
+        terremotos.forEach(loc => {
+            new google.maps.Marker({
+                position: { lat: loc.lat, lng: loc.lng },
+                map: map,
+                title: loc.tittle,
+                label: loc.icono,
+            });
+        });
+        mapa.style.display = 'block';
+
+        document.getElementById('categoria').value = "";
+        document.getElementById('direccion').value = "";
+        document.getElementById('evento').value = "";
+        return;
     }else{
 
         if (!categoria && direccion) {
