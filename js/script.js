@@ -156,17 +156,31 @@ async function obtenerDatosXML() {
 
     terremotos = []; 
     items.forEach(item => {
-      const titulo = item.querySelector("title")?.textContent || "Sin título"; //se busca el primer <title> hijo y se extrae su texto
-    const lat = parseFloat(item.getElementsByTagNameNS("*", "lat")[0]?.textContent); //se extrae latitud
-    const lon = parseFloat(item.getElementsByTagNameNS("*", "long")[0]?.textContent); //se extrae longitud
+      const titulo = item.querySelector("title")?.textContent || "Sin título";
+      const lat = parseFloat(item.getElementsByTagNameNS("*", "lat")[0]?.textContent);
+      const lon = parseFloat(item.getElementsByTagNameNS("*", "long")[0]?.textContent);
+      const descripcion = item.querySelector("description")?.textContent || "";
 
+      const match = descripcion.match(/magnitud\s(\d+(\.\d+)?)/i);
+      const magnitud = match ? parseFloat(match[1]) : null;
+
+      let icono = "🌋";
+      if (magnitud !== null) {
+        if (magnitud >= 2 && magnitud < 3) {
+          icono = "💥";
+        } else if (magnitud >= 3) {
+          icono = "⚡";
+        } else {
+          icono = "🌋";
+        }
+      }
 
       if (!isNaN(lat) && !isNaN(lon)) {
         terremotos.push({
           lat: lat,
           lng: lon,
-          title: titulo,
-          icono: "🌋"
+          tittle: titulo,
+          icono: icono
         });
       }
     });
