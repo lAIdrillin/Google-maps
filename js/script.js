@@ -167,7 +167,7 @@ async function obtenerDatosXML() {
           lat: lat,
           lng: lon,
           title: titulo,
-          icono: "🌋"
+          icono: "❕"
         });
       }
     });
