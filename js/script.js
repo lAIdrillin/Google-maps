@@ -145,25 +145,33 @@ enviar.addEventListener('click', function () {
     const direccion = direccionInput.value;
     const ciudad = document.getElementById('ciudad').value;
     const categoria = document.getElementById('categoria').value;
+    const evento = document.getElementById('evento').value
+    if(evento){
+        alert("mdwqd");
+    }else{
+
+        if (!categoria && direccion) {
+        alert("Ingrese una categoría para su Dirección");
+        return;
+        }
+
+        if (categoria && !direccion){
+        alert("Ingrese una direccion para su Dirección");
+        return;
+        }
+
+        if(categoria && direccion){
+        añadirAlMapa(direccion, ciudad, categoria);
+        }
 
 
-    if (!categoria && direccion) {
-    alert("Ingrese una categoría para su Dirección");
-    return;
-    }
+        comprobarCiudad(ciudad);
 
-    if (categoria && !direccion){
-    alert("Ingrese una direccion para su Dirección");
-    return;
-    }
-
-    if(categoria && direccion){
-    añadirAlMapa(direccion, ciudad, categoria);
     }
     document.getElementById('categoria').value = "";
     document.getElementById('direccion').value = "";
+    document.getElementById('evento').value = "";
 
-    comprobarCiudad(ciudad);
 });
 
 borrar.addEventListener('click', function () {
