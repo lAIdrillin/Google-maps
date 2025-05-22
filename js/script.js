@@ -233,15 +233,16 @@ enviar.addEventListener('click', async function () {
 });
 
 borrar.addEventListener('click', function () {
-
     for (let ciudad in localizaciones) {
         localizaciones[ciudad] = [];
     }
-
-    let map = new google.maps.Map(document.getElementById('map'), {
+    guardarEnLocalStorage();
+    const map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 48.85879187839086, lng: 2.352870623663526 },
         zoom: 4
     });
-    
+
+   
 });
+
 
