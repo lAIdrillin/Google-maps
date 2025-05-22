@@ -168,8 +168,10 @@ async function obtenerDatosXML() {
       if (magnitud !== null) {
         if (magnitud >= 2 && magnitud < 3) {
           icono = "💥";
-        } else if (magnitud >= 3) {
+        } else if (magnitud >= 3 < 4.5) {
           icono = "⚡";
+        }else if(magnitud >= 4.5){
+            icono = "💣"
         } else {
           icono = "🌋";
         }
