@@ -47,8 +47,7 @@
           <td><strong>Evento Geografico:</strong>
             <select id="evento">
               <option value="" selected disabled>---Seleccione un evento---</option>
-              <option value="terremotos">Terremotos</option>
-              <option value="tsunamis">Tsunamis</option>
+              <option value="terremotos">Terremotos y Maremotos</option>
               <option value="volcanes">Volcanes</option>
             </select>
             
@@ -66,6 +65,12 @@
     </div>
     <div id="imagen"></div>
     <div id="map"></div>
+    <div id="leyenda" style="display: none; padding: 10px; font-size: 14px;">
+      <strong>Leyenda:</strong><br>
+      🟢 Magnitud 2–3<br>
+      🟡 Magnitud 3–3.5<br>
+      ⚫ Magnitud > 3.5
+    </div>
   </div>
 
   <script src="js/script.js"></script>

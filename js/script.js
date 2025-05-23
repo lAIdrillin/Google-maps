@@ -212,22 +212,23 @@ async function comprobarEvento(evento) {
             });
         });
         mapa.style.display = 'block';
+        let leyenda = document.getElementById('leyenda');
+        leyenda.style.display = 'block';
 
-        document.getElementById('categoria').value = "";
-        document.getElementById('direccion').value = "";
-        document.getElementById('evento').value = "";
-        return;
-    }else if(evento === "thunamis"){
-        
     }else if(evento === "volcanes"){
         
     }
+    document.getElementById('categoria').value = "";
+        document.getElementById('direccion').value = "";
+        document.getElementById('evento').value = "";
+        return;
 }
 
 
 
 
 enviar.addEventListener('click', async function () {
+    leyenda.style.display = 'none';
     const direccionInput = document.getElementById('direccion');
     const direccion = direccionInput.value;
     const ciudad = document.getElementById('ciudad').value;
