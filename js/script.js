@@ -167,13 +167,13 @@ async function obtenerDatosXML() {
 
       let icono = "🟢";
       if (magnitud !== null) {
-        if (magnitud >= 2 && magnitud < 3) {
+        if ( magnitud < 3) {
           icono = "🟢";
         
-        } else if (magnitud >= 3 && magnitud < 3.5) {
+        } else if (magnitud >= 3 && magnitud <= 4) {
             icono = "🟡";
         
-        } else if (magnitud > 3.5) {
+        } else if (magnitud >= 4) {
           icono = "⚫";
         } else {
           icono = "🌋";
@@ -267,6 +267,8 @@ borrar.addEventListener('click', function () {
     for (let ciudad in localizaciones) {
         localizaciones[ciudad] = [];
     }
+
+    localStorage.removeItem('localizaciones'); // Elimina los datos de localStorage
 
     let map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 48.85879187839086, lng: 2.352870623663526 },
