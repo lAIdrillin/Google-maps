@@ -27,6 +27,8 @@ const enviar = document.getElementById('enviar');
 const formulario = document.getElementById('formulario');
 const mapa = document.getElementById('map');
 const borrar = document.getElementById('borrar');
+const url = 'https://www.ign.es/ign/RssTools/sismologia.xml';
+let terremotos = []; 
 
 
 function guardarEnLocalStorage() {
@@ -61,7 +63,7 @@ function añadirAlMapa(direccion, ciudad, categoria) {
 }
 
 
-
+//Selecciona un icono segun la categoria elegida por el usuario
 function seleccionIcono(categoria){
     switch (categoria.toLowerCase()) {
         case 'deportes': return '⚽';
@@ -73,6 +75,7 @@ function seleccionIcono(categoria){
     }
 }
 
+//Muestra el mapa con los parametros recibidos
 function initMap(lat, lng, ciudad, zoom) {
     
     let map = new google.maps.Map(document.getElementById("map"), {
@@ -93,6 +96,7 @@ function initMap(lat, lng, ciudad, zoom) {
     }
   }
 
+  //Comprueba la ciudad ingresada o si esta vacia
 function comprobarCiudad(ciudad){
     let lat;
     let lng;
@@ -140,10 +144,7 @@ function comprobarCiudad(ciudad){
 
 }
 
-const url = 'https://www.ign.es/ign/RssTools/sismologia.xml';
-
-let terremotos = []; 
-
+//extrae los datos de el xml 
 async function obtenerDatosXML() {
   try {
     const respuesta = await fetch(url); //hace una petición HTTP a la URL del feed de sismología.
@@ -164,14 +165,16 @@ async function obtenerDatosXML() {
       const match = descripcion.match(/magnitud\s(\d+(\.\d+)?)/i);
       const magnitud = match ? parseFloat(match[1]) : null;
 
-      let icono = "";
+      let icono = "🟢";
       if (magnitud !== null) {
         if (magnitud >= 2 && magnitud < 3) {
-          icono = "💥";
-        } else if (magnitud >= 3 < 4.5) {
-          icono = "⚡";
-        }else if(magnitud >= 4.5){
-            icono = "💣"
+          icono = "🟢";
+        
+        } else if (magnitud >= 3 && magnitud < 3.5) {
+            icono = "🟡";
+        
+        } else if (magnitud > 3.5) {
+          icono = "⚫";
         } else {
           icono = "🌋";
         }
@@ -192,15 +195,7 @@ async function obtenerDatosXML() {
   }
 }
 
-obtenerDatosXML();
-
-
-enviar.addEventListener('click', async function () {
-    const direccionInput = document.getElementById('direccion');
-    const direccion = direccionInput.value;
-    const ciudad = document.getElementById('ciudad').value;
-    const categoria = document.getElementById('categoria').value;
-    const evento = document.getElementById('evento').value
+async function comprobarEvento(evento) {
     if(evento === "terremotos"){
         await obtenerDatosXML();
 
@@ -222,6 +217,24 @@ enviar.addEventListener('click', async function () {
         document.getElementById('direccion').value = "";
         document.getElementById('evento').value = "";
         return;
+    }else if(evento === "thunamis"){
+        
+    }else if(evento === "volcanes"){
+        
+    }
+}
+
+
+
+
+enviar.addEventListener('click', async function () {
+    const direccionInput = document.getElementById('direccion');
+    const direccion = direccionInput.value;
+    const ciudad = document.getElementById('ciudad').value;
+    const categoria = document.getElementById('categoria').value;
+    const evento = document.getElementById('evento').value
+    if(evento != "") {
+        comprobarEvento(evento);
     }else{
 
         if (!categoria && direccion) {
