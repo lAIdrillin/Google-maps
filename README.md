@@ -49,3 +49,20 @@ En la sesion de hoy nos hemos encargado de crear un input para introducir una di
 
 **Ideas de mejora futura**:
 - Mejorar iconos del mapa
+
+## Sesión 4: Obtener posiciones de forma dinámica (22/05/2025) y (23/05/2025)
+
+### Resumen
+
+### Dificultades Encontradas
+
+### Soluciones Aplicadas
+
+### Fuentes Consultadas
+- W3schools
+- Chat GPT
+- Compañeros de clase
+**Decisiones tecnicas**:
+- 
+**Ideas de mejora futura**:
+- 
