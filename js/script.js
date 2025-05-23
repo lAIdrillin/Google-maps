@@ -29,8 +29,6 @@ const mapa = document.getElementById('map');
 const borrar = document.getElementById('borrar');
 const url = 'https://www.ign.es/ign/RssTools/sismologia.xml';
 let terremotos = [];
-const urlvolcanes = 'https://volcano.si.edu/news/WeeklyVolcanoCAP.xml?'
-let volcanes = [];
 
 
 function guardarEnLocalStorage() {
