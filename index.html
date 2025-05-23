@@ -2,11 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>EjemMaps</title>
+  <title>AppMaps</title>
+  <link rel="icon" type="image/x-icon" href="img/favicon-32x32.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="contenido">
+    
     <div id="formulario">
       <table>
         <tr>
@@ -20,12 +22,16 @@
               <option value="viena">Viena</option>
               <option value="bucarest">Bucarest</option>
               <option value="tokyo">Tokyo</option>
+              <option value=""disabled>+ en posteriores versiones</option>
             </select>
+          </td>
+          <td>
+            
           </td>
         </tr>
         <tr>
           <td><strong>Dirección:</strong>
-            <input type="text" id="direccion">
+            <input type="text" id="direccion"placeholder="Introduzca una dirección">
           </td>
         </tr>
         <tr>
@@ -38,7 +44,19 @@
               <option value="monumentos">Monumentos</option>
               <option value="torres">Torre</option>
               <option value="otros">Otros</option>
+              <option value=""disabled>+ en posteriores versiones</option>
             </select>
+
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Evento Geografico:</strong>
+            <select id="evento">
+              <option value="" selected disabled>---Seleccione un evento---</option>
+              <option value="terremotos">Terremotos y Maremotos</option>
+              <option value=""disabled>+ en posteriores versiones</option>
+            </select>
+            
           </td>
         </tr>
         <tr>
@@ -53,6 +71,21 @@
     </div>
     <div id="imagen"></div>
     <div id="map"></div>
+    <div id="leyenda">
+      <strong>Leyenda:</strong><br>
+      🟢 Magnitud 0-3 (Leve) <br>
+      🟡 Magnitud 3-4 (Moderado)<br>
+      ⚫ Magnitud >=4 (Peligroso)
+    </div>
+    <div id="leyendaMarcadores">
+      <strong>Leyenda:</strong><br>
+      ⛪ Monumentos<br>
+      🗿 Cultura<br>
+      ✈️ Viajes<br>
+      🗼 Torres<br>
+      ⚽ Deportes<br>
+      ⚙️ Otros
+    </div>
   </div>
 
   <script src="js/script.js"></script>

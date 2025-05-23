@@ -27,6 +27,10 @@ const enviar = document.getElementById('enviar');
 const formulario = document.getElementById('formulario');
 const mapa = document.getElementById('map');
 const borrar = document.getElementById('borrar');
+const url = 'https://www.ign.es/ign/RssTools/sismologia.xml';
+let terremotos = [];
+let leyenda = document.getElementById('leyenda');
+let leyendaMarcadores = document.getElementById('leyendaMarcadores');
 
 
 function guardarEnLocalStorage() {
@@ -40,6 +44,7 @@ function añadirAlMapa(direccion, ciudad, categoria) {
         return;
     }else{
         geocoder.geocode({ address: direccion +", " + ciudad }, (results, status) => {
+
             if (status === "OK") {
                 const location = results[0].geometry.location;
                 const latit = location.lat();
@@ -61,7 +66,7 @@ function añadirAlMapa(direccion, ciudad, categoria) {
 }
 
 
-
+//Selecciona un icono segun la categoria elegida por el usuario
 function seleccionIcono(categoria){
     switch (categoria.toLowerCase()) {
         case 'deportes': return '⚽';
@@ -73,6 +78,7 @@ function seleccionIcono(categoria){
     }
 }
 
+//Muestra el mapa con los parametros recibidos
 function initMap(lat, lng, ciudad, zoom) {
     
     let map = new google.maps.Map(document.getElementById("map"), {
@@ -93,6 +99,7 @@ function initMap(lat, lng, ciudad, zoom) {
     }
   }
 
+  //Comprueba la ciudad ingresada o si esta vacia
 function comprobarCiudad(ciudad){
     let lat;
     let lng;
@@ -140,30 +147,122 @@ function comprobarCiudad(ciudad){
 
 }
 
-enviar.addEventListener('click', function () {
+//extrae los datos de el xml 
+async function obtenerDatosXML() {
+  try {
+    const respuesta = await fetch(url); //hace una petición HTTP a la URL del feed de sismología.
+    const textoXML = await respuesta.text(); // lee la respuesta como texto plano.
+
+    const parser = new DOMParser(); //convierte la cadena de texto en un árbol DOM.
+    const xmlDoc = parser.parseFromString(textoXML, "application/xml"); //es ahora un objeto que podemos navegar con métodos DOM.
+
+    const items = xmlDoc.querySelectorAll("item");  //Cada <item> en el feed representa un terremoto o evento sísmico.
+
+    terremotos = []; 
+    items.forEach(item => {
+      const titulo = item.querySelector("title")?.textContent || "Sin título";
+      const lat = parseFloat(item.getElementsByTagNameNS("*", "lat")[0]?.textContent);
+      const lon = parseFloat(item.getElementsByTagNameNS("*", "long")[0]?.textContent);
+      const descripcion = item.querySelector("description")?.textContent || "";
+
+      const match = descripcion.match(/magnitud\s(\d+(\.\d+)?)/i);
+      const magnitud = match ? parseFloat(match[1]) : null;
+
+      let icono = "🟢";
+      if (magnitud !== null) {
+        if ( magnitud < 3) {
+          icono = "🟢";
+        
+        } else if (magnitud >= 3 && magnitud <= 4) {
+            icono = "🟡";
+        
+        } else if (magnitud >= 4) {
+          icono = "⚫";
+        } else {
+          icono = "🌋";
+        }
+      }
+
+      if (!isNaN(lat) && !isNaN(lon)) {
+        terremotos.push({
+          lat: lat,
+          lng: lon,
+          tittle: titulo + " -magnitud: " + magnitud, 
+          icono: icono
+        });
+      }
+    });
+
+  } catch (error) {
+    console.error("Error al obtener o procesar el XML:", error);
+  }
+}
+
+async function comprobarEvento(evento) {
+    if(evento === "terremotos"){
+        await obtenerDatosXML();
+
+        let map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 40.0, lng: -3.7 },
+            zoom: 5,
+        });
+        terremotos.forEach(loc => {
+            new google.maps.Marker({
+                position: { lat: loc.lat, lng: loc.lng },
+                map: map,
+                title: loc.tittle,
+                label: loc.icono,
+            });
+        });
+        mapa.style.display = 'block';
+        leyenda.style.display = 'block';
+
+    }else if(evento === "volcanes"){
+        
+    }
+    document.getElementById('categoria').value = "";
+        document.getElementById('direccion').value = "";
+        document.getElementById('evento').value = "";
+        return;
+}
+
+
+
+
+enviar.addEventListener('click', async function () {
+    leyenda.style.display = 'none';
+    leyendaMarcadores.style.display = 'none';
     const direccionInput = document.getElementById('direccion');
     const direccion = direccionInput.value;
     const ciudad = document.getElementById('ciudad').value;
     const categoria = document.getElementById('categoria').value;
+    const evento = document.getElementById('evento').value
+    if(evento != "") {
+        comprobarEvento(evento);
+    }else{
+        leyendaMarcadores.style.display = 'block';
+        if (!categoria && direccion) {
+        alert("Ingrese una categoría para su Dirección");
+        return;
+        }
+
+        if (categoria && !direccion){
+        alert("Ingrese una direccion para su Marcador");
+        return;
+        }
+
+        if(categoria && direccion){
+        añadirAlMapa(direccion, ciudad, categoria);
+        }
 
 
-    if (!categoria && direccion) {
-    alert("Ingrese una categoría para su Dirección");
-    return;
-    }
+        comprobarCiudad(ciudad);
 
-    if (categoria && !direccion){
-    alert("Ingrese una direccion para su Dirección");
-    return;
-    }
-
-    if(categoria && direccion){
-    añadirAlMapa(direccion, ciudad, categoria);
     }
     document.getElementById('categoria').value = "";
     document.getElementById('direccion').value = "";
+    document.getElementById('evento').value = "";
 
-    comprobarCiudad(ciudad);
 });
 
 borrar.addEventListener('click', function () {
@@ -171,6 +270,8 @@ borrar.addEventListener('click', function () {
     for (let ciudad in localizaciones) {
         localizaciones[ciudad] = [];
     }
+
+    localStorage.removeItem('localizaciones'); // Elimina los datos de localStorage
 
     let map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 48.85879187839086, lng: 2.352870623663526 },
