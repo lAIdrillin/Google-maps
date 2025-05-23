@@ -247,7 +247,7 @@ enviar.addEventListener('click', async function () {
         }
 
         if (categoria && !direccion){
-        alert("Ingrese una direccion para su Dirección");
+        alert("Ingrese una direccion para su Marcador");
         return;
         }
 
