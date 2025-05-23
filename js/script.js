@@ -29,6 +29,8 @@ const mapa = document.getElementById('map');
 const borrar = document.getElementById('borrar');
 const url = 'https://www.ign.es/ign/RssTools/sismologia.xml';
 let terremotos = [];
+let leyenda = document.getElementById('leyenda');
+let leyendaMarcadores = document.getElementById('leyendaMarcadores');
 
 
 function guardarEnLocalStorage() {
@@ -42,6 +44,7 @@ function añadirAlMapa(direccion, ciudad, categoria) {
         return;
     }else{
         geocoder.geocode({ address: direccion +", " + ciudad }, (results, status) => {
+
             if (status === "OK") {
                 const location = results[0].geometry.location;
                 const latit = location.lat();
@@ -184,7 +187,7 @@ async function obtenerDatosXML() {
         terremotos.push({
           lat: lat,
           lng: lon,
-          tittle: titulo,
+          tittle: titulo + " -magnitud: " + magnitud, 
           icono: icono
         });
       }
@@ -212,7 +215,6 @@ async function comprobarEvento(evento) {
             });
         });
         mapa.style.display = 'block';
-        let leyenda = document.getElementById('leyenda');
         leyenda.style.display = 'block';
 
     }else if(evento === "volcanes"){
@@ -229,6 +231,7 @@ async function comprobarEvento(evento) {
 
 enviar.addEventListener('click', async function () {
     leyenda.style.display = 'none';
+    leyendaMarcadores.style.display = 'none';
     const direccionInput = document.getElementById('direccion');
     const direccion = direccionInput.value;
     const ciudad = document.getElementById('ciudad').value;
@@ -237,7 +240,7 @@ enviar.addEventListener('click', async function () {
     if(evento != "") {
         comprobarEvento(evento);
     }else{
-
+        leyendaMarcadores.style.display = 'block';
         if (!categoria && direccion) {
         alert("Ingrese una categoría para su Dirección");
         return;
