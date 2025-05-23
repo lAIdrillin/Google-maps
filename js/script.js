@@ -165,7 +165,7 @@ async function obtenerDatosXML() {
       const match = descripcion.match(/magnitud\s(\d+(\.\d+)?)/i);
       const magnitud = match ? parseFloat(match[1]) : null;
 
-      let icono = "🟡";
+      let icono = "🟢";
       if (magnitud !== null) {
         if (magnitud >= 2 && magnitud < 3) {
           icono = "🟢";
@@ -179,6 +179,7 @@ async function obtenerDatosXML() {
           icono = "🌋";
         }
       }
+      
 
       if (!isNaN(lat) && !isNaN(lon)) {
         terremotos.push({

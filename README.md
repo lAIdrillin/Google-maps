@@ -49,3 +49,4 @@ En la sesion de hoy nos hemos encargado de crear un input para introducir una di
 
 **Ideas de mejora futura**:
 - Mejorar iconos del mapa
+
