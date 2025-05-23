@@ -66,12 +66,9 @@ body {
 
 #enviar:hover, #borrar:hover {
     background: linear-gradient(90deg, #0e8d9e 0%, #032a62 100%);
-    transform: translateY(-2px) scale(1.04);
 }
 
 #map {
     display: none;
     flex-grow: 1;
-    width: 100%;
-    height: 100vh;
 }
